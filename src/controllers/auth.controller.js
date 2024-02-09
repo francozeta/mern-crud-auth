@@ -27,8 +27,6 @@ export const register = async (req, res) => {
 			updatedAt: userSaved.updatedAt
 		});
 
-
-		// res.send('Registrando...')
 	} catch (error) {
 		res.status(500).json({message: error.message});
 	}
@@ -77,3 +75,6 @@ export const logout = (req, res) => {
 	});
 	res.sendStatus(200);
 };	
+export const profile = (req, res) => {
+	res.send('profile')
+}

@@ -3,8 +3,14 @@ import bcrypt from 'bcryptjs';
 import { createAccessToken } from '../libs/jwt.js';
 
 export const register = async (req, res) => { 
+
+
+
 	//req.body seran los datos que el cliente envie
 	const { email, password, username } = req.body;
+
+	const userFound = await User.findOne({email});
+	if(userFound) return res.status(400).json(['The email already exists'])
 
 	try {
 

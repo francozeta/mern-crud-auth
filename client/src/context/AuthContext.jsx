@@ -1,5 +1,5 @@
 import { createContext, useState, useContext } from 'react';
-import { registerRequest } from '../api/auth';
+import { registerRequest, loginRequest } from '../api/auth.js';
 
 // guarda información del usuario en el navegador, pero más específicamente, se utiliza para proporcionar un mecanismo para compartir y acceder a la información de autenticación del usuario en toda la aplicación
 
@@ -29,9 +29,19 @@ export const AuthProvider = ({ children }) => {
 			setErrors(error.response.data)
 		}
 	}
+
+	const signin = async (user) => {
+		try {
+			const res  = await loginRequest(user)
+			console.log(res)
+		} catch (error) {
+			setErrors(error.response.data)
+		}
+	}
 	return (
 		<AuthContext.Provider value={{
 			signup,
+			signin,
 			user,
 			isAuthenticated,
 			errors

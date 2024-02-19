@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../context/AuthContext.jsx';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 function RegisterPage() {
 	const { register, handleSubmit, formState: {
 		errors
@@ -49,10 +49,14 @@ function RegisterPage() {
 				{errors.password && (
 					<p className='text-red-500'>Password is required</p>
 				)}
-				<button type='submit'>
+				<button type='submit' className='bg-slate-600 p-2 w-full rounded-md mb-3'>
 					Register
 				</button>
 			</form>
+
+			<p className='flex gap-x-2 justify-between'>
+					Already have an account? <Link to={'/login'} className='text-sky-500'>Sign In</Link>
+				</p>
 		</div>
 		</>
 	)

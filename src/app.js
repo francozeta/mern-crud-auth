@@ -8,7 +8,8 @@ import cors from 'cors';
 const app = express();
 
 app.use(cors({
-	origin: 'http://localhost:5173' //solo en este dominio se podra comunicar el backend
+	origin: 'http://localhost:5173', //solo en este dominio se podra comunicar el backend
+	credentials: true
 }));
 app.use(morgan('dev'));
 app.use(express.json());	
